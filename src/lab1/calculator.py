@@ -34,8 +34,8 @@ def calculate(expression):
     expression = expression.replace(" ","")
 
     for elem in expression:
-        if elem not in "1234567890+-*/()":
-            raise ValueError("Некорректное выражение")
+        if elem not in "1234567890+-*/().":
+            raise ValueError(f"Недопустимый символ: {elem}")
 
     tokens = re.findall(r"(\d+(?:\.\d*)?|\.\d+|[+\-*/()]|[()])", expression)
 
@@ -50,7 +50,10 @@ def calculate(expression):
         elif token == ")":
             while operators and operators[-1] != "(":
                 operation(operators, values)
-            operators.pop()
+            try:
+                operators.pop()
+            except:
+                raise ValueError("Неккоректное выражение")
         elif token in "+-*/":
             while operators and priority(operators[-1]) >= priority(token):
                 operation(operators, values)
