@@ -1,6 +1,7 @@
 import unittest
 from src.lab2.rsa import is_prime
 from src.lab2.rsa import gcd
+from src.lab2.rsa import multiplicative_inverse
 class RsaTestCase(unittest.TestCase):
     def test_Prime(self):
         self.assertEqual(is_prime(19), True)
@@ -20,7 +21,8 @@ class RsaTestCase(unittest.TestCase):
     def test_NotCoprimeNumbers(self):
         self.assertEqual(gcd(5, 25), 5)
 
-
+    def test_MultiplicativeInverse(self):
+        self.assertEqual(multiplicative_inverse(7, 40), 23)
 
 if __name__ == '__main__':
     unittest.main()
