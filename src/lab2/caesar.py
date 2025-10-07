@@ -11,7 +11,18 @@ def encrypt_caesar(plaintext: str, shift: int = 3) -> str:
     ''
     """
     ciphertext = ""
-    # PUT YOUR CODE HERE
+    upper_alphabet = [chr(i) for i in range(ord("A"), ord("Z") + 1)] + [chr(i) for i in range(ord("A"), ord("Z") + 1)]
+    lower_alphabet = [chr(i) for i in range(ord("a"), ord("z") + 1)] + [chr(i) for i in range(ord("a"), ord("z") + 1)]
+    for ch in plaintext:
+        if ch in upper_alphabet:
+            ch_index = upper_alphabet.index(ch)
+            ciphertext += upper_alphabet[ch_index + shift]
+
+        elif ch in lower_alphabet:
+            ch_index = lower_alphabet.index(ch)
+            ciphertext += lower_alphabet[ch_index + shift]
+        else:
+            ciphertext += ch
     return ciphertext
 
 
