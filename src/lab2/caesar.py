@@ -39,5 +39,17 @@ def decrypt_caesar(ciphertext: str, shift: int = 3) -> str:
     ''
     """
     plaintext = ""
-    # PUT YOUR CODE HERE
+    upper_alphabet = [chr(i) for i in range(ord("A"), ord("Z") + 1)] + [chr(i) for i in range(ord("A"), ord("Z") + 1)]
+    lower_alphabet = [chr(i) for i in range(ord("a"), ord("z") + 1)] + [chr(i) for i in range(ord("a"), ord("z") + 1)]
+    for ch in ciphertext:
+        if ch in upper_alphabet:
+            ch_index = upper_alphabet.index(ch)
+            plaintext += upper_alphabet[ch_index + 26 - shift]
+
+        elif ch in lower_alphabet:
+            ch_index = lower_alphabet.index(ch)
+            plaintext += lower_alphabet[ch_index + 26 - shift]
+        else:
+            plaintext += ch
+
     return plaintext
