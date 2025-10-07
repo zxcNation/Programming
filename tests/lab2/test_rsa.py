@@ -1,6 +1,6 @@
 import unittest
 from src.lab2.rsa import is_prime
-
+from src.lab2.rsa import gcd
 class RsaTestCase(unittest.TestCase):
     def test_Prime(self):
         self.assertEqual(is_prime(19), True)
@@ -13,6 +13,13 @@ class RsaTestCase(unittest.TestCase):
 
     def test_TrivialTwo(self):
         self.assertEqual(is_prime(2), True)
+
+    def test_CoprimeNumbers(self):
+        self.assertEqual(gcd(7,5), 1)
+
+    def test_NotCoprimeNumbers(self):
+        self.assertEqual(gcd(5, 25), 5)
+
 
 
 if __name__ == '__main__':

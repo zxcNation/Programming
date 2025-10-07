@@ -29,9 +29,11 @@ def gcd(a: int, b: int) -> int:
     >>> gcd(3, 7)
     1
     """
-    # PUT YOUR CODE HERE
-    pass
+    first, second = max(a,b), min(a,b)
+    while second != 0:
+        first, second = second, first % second
 
+    return first
 
 def multiplicative_inverse(e: int, phi: int) -> int:
     """
